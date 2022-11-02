@@ -646,6 +646,7 @@ address {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s;
 }
 
 .modal {
@@ -673,12 +674,14 @@ address {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 250ms;
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: scale(0);
 }
 
 .modal > h2 {
@@ -698,23 +701,20 @@ address {
   border-radius: 4px;
   padding-left: 40px;
   padding-right: 0;
-  transition: color;
+  transition: color border;
+  transition: 250ms;
 }
-.modal-form-input::selection,
-.modal-form-input:hover,
+
+.modal-icon {
+  transition: 250ms;
+}
+
 .modal-form-input:focus {
-  border: 1px solid #2196f3;
-  fill: #2196f3;
+  outline: 2px solid #2196f3;
 }
 
-.modal-form-input:hover svg {
-  border: 1px solid #2196f3;
+.icon-container:focus-within svg {
   fill: #2196f3;
-  color: #2196f3;
-}
-
-.checkbox {
-  background: url(../images/checkbox.svg) 0px center no-repeat;
 }
 
 .modal-container {
@@ -765,22 +765,52 @@ label > div {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-
-  padding-bottom: 30px;
+  padding-bottom: 16px;
   font-size: 14px;
   line-height: 1.71rem;
   letter-spacing: 0.03em;
   color: #757575;
 }
 
-.modal-terms > .checkbox {
-  /* position: absolute; */
+.modal-terms > span {
+  position: relative;
+}
+
+.checkbox {
   margin-right: 8px;
-  top: 20px;
   width: 16px;
   height: 15px;
-  accent-color: var(--project-blue);
+  visibility: hidden;
 }
+
+.checked {
+  opacity: 0;
+  position: absolute;
+  left: -24px;
+  top: -8px;
+  transition: 250ms;
+}
+
+.unchecked {
+  stroke: 4px;
+  opacity: 1;
+  position: absolute;
+  left: -24px;
+  top: -8px;
+  transition: 250ms;
+}
+
+.checkbox:checked ~ span .checked {
+  opacity: 1;
+}
+
+.checkbox:checked ~ span .unchecked {
+  opacity: 0;
+}
+
+/* .checkbox:checked .unchecked {
+  opacity: 0;
+} */
 
 .modal-terms a {
   color: var(--project-blue);
