@@ -702,18 +702,21 @@ address {
   padding-right: 0;
   transition: color border;
   transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
 }
 
 .modal-icon {
   transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-form-input:focus {
-  outline: 2px solid #2196f3;
+  border: 2px solid var(--project-blue);
 }
 
 .icon-container:focus-within svg {
-  fill: #2196f3;
+  fill: var(--project-blue);
 }
 
 .modal-container {
